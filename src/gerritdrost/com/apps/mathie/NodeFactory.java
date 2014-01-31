@@ -68,6 +68,19 @@ public enum NodeFactory {
 
 			};
 		}
+	},
+	SIN {
+		@Override
+		public Node createNode(Node... children) {
+			return new Node(children) {
+
+				@Override
+				public void update() {
+					this.value = Math.sin(children[0].value);
+				}
+
+			};
+		}
 	};
 
 	public abstract Node createNode(Node... children);
