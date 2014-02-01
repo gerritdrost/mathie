@@ -1,19 +1,24 @@
 package gerritdrost.com.apps.mathie;
 
 import gerritdrost.com.apps.mathie.expression.Expression;
-import gerritdrost.com.apps.mathie.injector.MathieGraphInjector;
+import gerritdrost.com.apps.mathie.injector.MathieInjector;
 import gerritdrost.com.apps.mathie.injector.annotations.Environment;
 import gerritdrost.com.apps.mathie.injector.annotations.Formula;
+import gerritdrost.com.apps.mathie.injector.annotations.GlobalEnvironment;
 import gerritdrost.com.apps.mathie.injector.annotations.Var;
 import gerritdrost.com.apps.mathie.node.defaults.Variable;
 
+@GlobalEnvironment("global-1")
 public class Test {
 
 	@Environment
 	MathieEnvironment mathie;
 
-	@Var("x")
+	@Var(env = "global-2", name = "x", val = 2.0)
 	Variable x;
+
+	@Var("x")
+	Variable x2;
 
 	@Formula("2*x")
 	Expression expression1;
@@ -28,8 +33,7 @@ public class Test {
 	Expression expression4;
 
 	public Test() {
-		MathieGraphInjector.get()
-							.inject(this);
+		MathieInjector.inject(this);
 
 	}
 
@@ -43,6 +47,7 @@ public class Test {
 		System.out.println(t.expression4.getValue());
 
 		t.x.set(20.0);
+		t.x2.set(3.0);
 
 		System.out.println(t.x.getValue());
 		System.out.println(t.expression1.getValue());

@@ -6,16 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation to be used for fields of type Expression. MathieInjector will inject the defined expression into the
- * variable when encountering this annotation.
+ * Annotation used to override the default instance-specific environment
  * 
  * @author Gerrit Drost <mail@gerritdrost.com>
- * 
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Formula {
-	String value() default "";
-	String expr() default "";
-	String env() default "";
+@Target(ElementType.TYPE)
+public @interface GlobalEnvironment {
+	String value();
 }
