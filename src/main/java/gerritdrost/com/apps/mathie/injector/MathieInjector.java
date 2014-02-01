@@ -97,6 +97,9 @@ public class MathieInjector {
 			}
 		}
 
+		if (object instanceof MathieInjectable)
+			((MathieInjectable) object).injectionDone();
+
 	}
 
 	/**

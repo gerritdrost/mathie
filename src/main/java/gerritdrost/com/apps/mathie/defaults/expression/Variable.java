@@ -27,12 +27,16 @@ public class Variable
 
 	@Override
 	public void recalculate() {
+
 	}
 
-	public void set(double value) {
-		this.value = value;
+	public void set(double newValue) {
+
+		double oldValue = this.value;
+		this.value = newValue;
 
 		updateParents();
+		fireValueChanged(oldValue, newValue);
 	}
 
 }
