@@ -13,7 +13,7 @@ public class ExpressionUtils {
 	 */
 	public static String removeUnusedBrackets(String expression) {
 
-		if (!expression.matches("^(.*)$"))
+		if (!expression.matches("^\\(.*\\)$"))
 			return expression;
 
 		int bracketsOpen = 1;
@@ -30,6 +30,14 @@ public class ExpressionUtils {
 				return expression;
 		}
 
-		return removeUnusedBrackets(expression.substring(1, expression.length() - 2));
+		if (expression.length() < 3)
+			return expression;
+		else
+			return removeUnusedBrackets(expression.substring(1, expression.length() - 1));
+
+	}
+
+	public static String normalizeString(String expression) {
+		return ExpressionUtils.removeUnusedBrackets(expression.replace(" ", ""));
 	}
 }
