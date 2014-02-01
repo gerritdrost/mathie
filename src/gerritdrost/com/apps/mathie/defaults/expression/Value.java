@@ -1,4 +1,4 @@
-package gerritdrost.com.apps.mathie.node.defaults;
+package gerritdrost.com.apps.mathie.defaults.expression;
 
 import gerritdrost.com.apps.mathie.expression.Expression;
 

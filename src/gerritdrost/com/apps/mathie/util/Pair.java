@@ -25,7 +25,7 @@ public class Pair<A, B> {
 	 * @param b
 	 * @return
 	 */
-	public static <A, B> Pair<A, B> t(A a, B b) {
+	public static <A, B> Pair<A, B> create(A a, B b) {
 		return new Pair<A, B>(a, b);
 	}
 

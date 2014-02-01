@@ -1,9 +1,9 @@
 package gerritdrost.com.apps.mathie;
 
 import gerritdrost.com.apps.mathie.config.MathieGraphConfiguration;
-import gerritdrost.com.apps.mathie.config.defaults.DefaultMathieGraphConfiguration;
+import gerritdrost.com.apps.mathie.defaults.config.DefaultMathieGraphConfiguration;
+import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
-import gerritdrost.com.apps.mathie.node.defaults.Variable;
 import gerritdrost.com.apps.mathie.operator.Operator;
 import gerritdrost.com.apps.mathie.util.ExpressionUtils;
 import gerritdrost.com.apps.mathie.util.Pair;

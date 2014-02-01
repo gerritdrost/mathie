@@ -1,12 +1,12 @@
 package gerritdrost.com.apps.mathie;
 
+import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.injector.MathieInjector;
 import gerritdrost.com.apps.mathie.injector.annotations.Environment;
 import gerritdrost.com.apps.mathie.injector.annotations.Formula;
 import gerritdrost.com.apps.mathie.injector.annotations.GlobalEnvironment;
 import gerritdrost.com.apps.mathie.injector.annotations.Var;
-import gerritdrost.com.apps.mathie.node.defaults.Variable;
 
 @GlobalEnvironment("global-1")
 public class Test {
@@ -20,10 +20,10 @@ public class Test {
 	@Var("x")
 	Variable x2;
 
-	@Formula("2*x")
+	@Formula("2*pi")
 	Expression expression1;
 
-	@Formula("5*x")
+	@Formula("5*e")
 	Expression expression2;
 
 	@Formula("x/2")

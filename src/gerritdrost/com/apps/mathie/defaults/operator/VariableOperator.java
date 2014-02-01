@@ -1,7 +1,7 @@
-package gerritdrost.com.apps.mathie.operator.defaults;
+package gerritdrost.com.apps.mathie.defaults.operator;
 
+import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
-import gerritdrost.com.apps.mathie.node.defaults.Variable;
 import gerritdrost.com.apps.mathie.operator.RegexOperator;
 
 public class VariableOperator

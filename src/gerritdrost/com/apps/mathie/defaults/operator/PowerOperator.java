@@ -1,13 +1,13 @@
-package gerritdrost.com.apps.mathie.operator.defaults;
+package gerritdrost.com.apps.mathie.defaults.operator;
 
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.operator.InfixOperator;
 
-public class DivideOperator
+public class PowerOperator
 		extends InfixOperator {
 
-	public DivideOperator() {
-		super('/');
+	public PowerOperator() {
+		super('^');
 	}
 
 	@Override
@@ -16,7 +16,7 @@ public class DivideOperator
 
 			@Override
 			public void recalculate() {
-				value = children[0].getValue() / children[1].getValue();
+				value = Math.pow(children[0].getValue(), children[1].getValue());
 			}
 
 		};

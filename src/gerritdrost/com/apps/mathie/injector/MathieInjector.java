@@ -1,12 +1,12 @@
 package gerritdrost.com.apps.mathie.injector;
 
 import gerritdrost.com.apps.mathie.MathieEnvironment;
+import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.injector.annotations.Environment;
 import gerritdrost.com.apps.mathie.injector.annotations.Formula;
 import gerritdrost.com.apps.mathie.injector.annotations.GlobalEnvironment;
 import gerritdrost.com.apps.mathie.injector.annotations.Var;
-import gerritdrost.com.apps.mathie.node.defaults.Variable;
 import gerritdrost.com.apps.mathie.util.ReflectionUtils;
 
 import java.lang.annotation.Annotation;
@@ -25,38 +25,11 @@ public class MathieInjector {
 
 	private static MathieInjector injector = null;
 
-	private static final HashMap<String, MathieEnvironment> globalEnvironmentMap = new HashMap<String, MathieEnvironment>();
-
 	/**
-	 * Uses a singleton instance of this class to use it to inject the variables into the given objects.
-	 * 
-	 * @param object
-	 *            the object whose variables should be injected
+	 * Contains global environments that can be shared between instances. Note that these are only global for this
+	 * injector, the variable is not static.
 	 */
-	public static final void inject(Object... objects) {
-
-		if (injector == null)
-			injector = new MathieInjector();
-
-		for (Object object : objects)
-			injector.injectFields(object);
-
-	}
-
-	/**
-	 * Uses a singleton instance of this class to use it to inject the variables into the given object.
-	 * 
-	 * @param object
-	 *            the object whose variables should be injected
-	 */
-	public static final void inject(Object object) {
-
-		if (injector == null)
-			injector = new MathieInjector();
-
-		injector.injectFields(object);
-
-	}
+	private final HashMap<String, MathieEnvironment> globalEnvironmentMap = new HashMap<String, MathieEnvironment>();
 
 	/**
 	 * Creates a new Environment. If you implemented your own MathieEnvironment, override this to return instances of
@@ -69,7 +42,8 @@ public class MathieInjector {
 	}
 
 	/**
-	 * Gets the global environment with the provided name or creates it if it does not exist yet.
+	 * Gets the global environment with the provided name or creates it if it does not exist yet. Note that these are
+	 * only global for this injector, they are not stored in a static variable.
 	 * 
 	 * @param globalEnvironmentName
 	 *            the name of the environment
@@ -249,5 +223,36 @@ public class MathieInjector {
 			return environment;
 		else
 			return getGlobalEnvironment(globalEnvironmentName);
+	}
+
+	/**
+	 * Uses a singleton instance of this class to use it to inject the variables into the given objects.
+	 * 
+	 * @param object
+	 *            the object whose variables should be injected
+	 */
+	public static final void inject(Object... objects) {
+
+		if (injector == null)
+			injector = new MathieInjector();
+
+		for (Object object : objects)
+			injector.injectFields(object);
+
+	}
+
+	/**
+	 * Uses a singleton instance of this class to use it to inject the variables into the given object.
+	 * 
+	 * @param object
+	 *            the object whose variables should be injected
+	 */
+	public static final void inject(Object object) {
+
+		if (injector == null)
+			injector = new MathieInjector();
+
+		injector.injectFields(object);
+
 	}
 }

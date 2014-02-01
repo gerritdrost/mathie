@@ -1,13 +1,13 @@
-package gerritdrost.com.apps.mathie.operator.defaults;
+package gerritdrost.com.apps.mathie.defaults.operator;
 
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.operator.InfixOperator;
 
-public class PowerOperator
+public class AddOperator
 		extends InfixOperator {
 
-	public PowerOperator() {
-		super('^');
+	public AddOperator() {
+		super('+');
 	}
 
 	@Override
@@ -16,9 +16,10 @@ public class PowerOperator
 
 			@Override
 			public void recalculate() {
-				value = Math.pow(children[0].getValue(), children[1].getValue());
+				value = children[0].getValue() + children[1].getValue();
 			}
-
+			
 		};
 	}
+
 }
