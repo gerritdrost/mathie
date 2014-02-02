@@ -76,7 +76,7 @@ public abstract class Expression {
 
 	@Override
 	public String toString() {
-		return String.format("\"%s\"%g:", expressionString, value);
+		return String.format("\"%s\": %g", expressionString, value);
 	}
 
 	public abstract void recalculate();
