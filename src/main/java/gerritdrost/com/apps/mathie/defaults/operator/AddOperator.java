@@ -12,7 +12,7 @@ public class AddOperator
 
 	@Override
 	public Expression create(String expression, Expression[] children) {
-		return new Expression(children) {
+		return new Expression(expression, children) {
 
 			@Override
 			public void recalculate() {

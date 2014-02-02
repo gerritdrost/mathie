@@ -20,7 +20,7 @@ public class Variable
 	}
 
 	public Variable(String variableName, double value) {
-		super(new Expression[0]);
+		super(variableName, new Expression[0]);
 		this.variableName = variableName;
 		this.value = value;
 	}

@@ -3,9 +3,9 @@ package gerritdrost.com.apps.mathie.injector;
 import gerritdrost.com.apps.mathie.ExpressionEnvironment;
 import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
-import gerritdrost.com.apps.mathie.injector.annotations.Environment;
-import gerritdrost.com.apps.mathie.injector.annotations.Formula;
-import gerritdrost.com.apps.mathie.injector.annotations.GlobalEnvironment;
+import gerritdrost.com.apps.mathie.injector.annotations.Env;
+import gerritdrost.com.apps.mathie.injector.annotations.Expr;
+import gerritdrost.com.apps.mathie.injector.annotations.GlobalEnv;
 import gerritdrost.com.apps.mathie.injector.annotations.Var;
 import gerritdrost.com.apps.mathie.util.ReflectionUtils;
 
@@ -21,9 +21,9 @@ import java.util.HashMap;
  * @author Gerrit Drost <mail@gerritdrost.com>
  * 
  */
-public class MathieInjector {
+public class Injector {
 
-	private static MathieInjector injector = null;
+	private static Injector injector = null;
 
 	/**
 	 * Contains global environments that can be shared between instances. Note that these are only global for this
@@ -72,8 +72,8 @@ public class MathieInjector {
 		// Class annotations first to determine the default environment to use
 		for (Annotation annotation : clazz.getAnnotations()) {
 
-			if (annotation instanceof GlobalEnvironment)
-				environment = getGlobalEnvironment(((GlobalEnvironment) annotation).value());
+			if (annotation instanceof GlobalEnv)
+				environment = getGlobalEnvironment(((GlobalEnv) annotation).value());
 
 		}
 
@@ -87,18 +87,18 @@ public class MathieInjector {
 							.isAssignableFrom(Variable.class) && annotation instanceof Var) {
 					injectVariable(environment, (Var) annotation, object, field);
 				} else if (field.getType()
-								.isAssignableFrom(Expression.class) && annotation instanceof Formula) {
-					injectExpression(environment, (Formula) annotation, object, field);
+								.isAssignableFrom(Expression.class) && annotation instanceof Expr) {
+					injectExpression(environment, (Expr) annotation, object, field);
 				} else if (field.getType()
-								.isAssignableFrom(ExpressionEnvironment.class) && annotation instanceof Environment) {
-					injectEnvironment(environment, (Environment) annotation, object, field);
+								.isAssignableFrom(ExpressionEnvironment.class) && annotation instanceof Env) {
+					injectEnvironment(environment, (Env) annotation, object, field);
 				}
 
 			}
 		}
 
-		if (object instanceof MathieInjectable)
-			((MathieInjectable) object).injectionDone();
+		if (object instanceof Injectable)
+			((Injectable) object).injectionDone();
 
 	}
 
@@ -114,9 +114,9 @@ public class MathieInjector {
 	 * @param environmentField
 	 *            the field of the object that needs to be injected
 	 */
-	protected void injectEnvironment(ExpressionEnvironment environment, Environment environmentAnnotation, Object object, Field environmentField) {
+	protected void injectEnvironment(ExpressionEnvironment environment, Env environmentAnnotation, Object object, Field environmentField) {
 
-		environment = chooseEnvironment(environment, environmentAnnotation.env());
+		environment = chooseEnvironment(environment, environmentAnnotation.value());
 
 		environmentField.setAccessible(true);
 
@@ -140,7 +140,7 @@ public class MathieInjector {
 	 * @param expressionField
 	 *            the field of the object that needs to be injected
 	 */
-	protected void injectExpression(ExpressionEnvironment environment, Formula expressionAnnotation, Object object, Field expressionField) {
+	protected void injectExpression(ExpressionEnvironment environment, Expr expressionAnnotation, Object object, Field expressionField) {
 
 		// Both value() and expr() can be the expression string. Bit of a hack but it makes it possible to have a
 		// shorter formula annotation when no other variables need to be defined.
@@ -237,7 +237,7 @@ public class MathieInjector {
 	public static final void inject(Object... objects) {
 
 		if (injector == null)
-			injector = new MathieInjector();
+			injector = new Injector();
 
 		for (Object object : objects)
 			injector.injectFields(object);
@@ -253,7 +253,7 @@ public class MathieInjector {
 	public static final void inject(Object object) {
 
 		if (injector == null)
-			injector = new MathieInjector();
+			injector = new Injector();
 
 		injector.injectFields(object);
 

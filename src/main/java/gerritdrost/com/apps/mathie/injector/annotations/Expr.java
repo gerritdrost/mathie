@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Formula {
+public @interface Expr {
 	String value() default "";
 	String expr() default "";
 	String env() default "";

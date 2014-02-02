@@ -16,13 +16,16 @@ public abstract class Expression {
 
 	@Getter
 	protected double value;
+	protected String expressionString;
 	protected Expression[] children = new Expression[0];
 	protected HashSet<Expression> parents = new HashSet<Expression>();
 	protected ArrayList<ExpressionListener> expressionListeners = new ArrayList<ExpressionListener>();
 
-	public Expression(Expression[] children) {
+	public Expression(String expressionString, Expression[] children) {
 
 		this.children = children;
+
+		this.expressionString = expressionString;
 
 		for (Expression child : children)
 			child.parents.add(this);
@@ -69,6 +72,11 @@ public abstract class Expression {
 		expressionListeners.clear();
 		children = null;
 		parents = null;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("\"%s\": %g", expressionString, value);
 	}
 
 	public abstract void recalculate();

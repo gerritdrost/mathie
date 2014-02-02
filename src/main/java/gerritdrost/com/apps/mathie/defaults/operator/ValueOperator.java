@@ -23,8 +23,8 @@ public class ValueOperator
 	}
 
 	@Override
-	public Expression create(String epxression, Expression[] children) {
-		return new Value(Double.parseDouble(epxression));
+	public Expression create(String expressionString, Expression[] children) {
+		return new Value(expressionString, Double.parseDouble(expressionString));
 	}
 
 }
