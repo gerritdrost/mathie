@@ -127,6 +127,7 @@ public class MathieEnvironment {
 				}
 
 				newNode = operator.create(expression, childNodes);
+				break;
 			}
 		}
 
