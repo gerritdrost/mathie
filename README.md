@@ -1,7 +1,7 @@
 # Mathie
 ## Description
-Mathie is a mathematical expression framework. It creates expression graphs (http://gerritdrost.com/2013/09/mathematical-expression-graphs) and provides an easy way to interface with them. With Mathie you can set up a framework of expressions sharing variables and quickly recalculate their values while the variables change.
-### Little boiler-plate!
+Mathie is a mathematical expression framework. It creates expression graphs (http://gerritdrost.com/2013/09/mathematical-expression-graphs) and provides an easy way to interface with them. With Mathie you can set up a framework of expressions sharing variables and quickly re-evaluate your expressions when the variables change.
+### Little boilerplate code!
 Using annotations and some injection code, Mathie makes it possible to use expressions in a class without writing lots of boilerplate code.
 ### Quick
 Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still pretty quick as well).
