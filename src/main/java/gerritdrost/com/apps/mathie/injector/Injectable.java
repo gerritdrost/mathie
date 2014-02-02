@@ -7,6 +7,6 @@ package gerritdrost.com.apps.mathie.injector;
  * @author Gerrit Drost <mail@gerritdrost.com>
  * 
  */
-public interface MathieInjectable {
+public interface Injectable {
 	void injectionDone();
 }
