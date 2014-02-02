@@ -39,15 +39,21 @@ public class MultiplyOperatorTest {
 	}
 
 	@Test
-	public void checkMultiplyOperator() {
-		assertEquals(mathieEnv.getExpression("2*3")
-								.getValue(), 6.0, 0.0);
+	public void checkDefault() {
+		assertEquals(8.0, mathieEnv.getExpression("2*4")
+									.getValue(), 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("4*3*2")
-								.getValue(), 24.0, 0.0);
+	@Test
+	public void checkMultiple() {
+		assertEquals(64.0, mathieEnv.getExpression("8*4*2")
+									.getValue(), 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("(6*3)*3")
-								.getValue(), 54.0, 0.0);
+	@Test
+	public void checkNested() {
+		assertEquals(64.0, mathieEnv.getExpression("(8*4)*2")
+									.getValue(), 0.0);
 	}
 
 	@After

@@ -1,7 +1,6 @@
 package gerritdrost.com.apps.mathie.defaults.operator;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import gerritdrost.com.apps.mathie.ExpressionEnvironment;
 import gerritdrost.com.apps.mathie.config.Configuration;
 import gerritdrost.com.apps.mathie.operator.Operator;
@@ -40,19 +39,34 @@ public class DivideOperatorTest {
 	}
 
 	@Test
-	public void checkDivideOperator() {
+	public void checkDefault() {
 		assertEquals(mathieEnv.getExpression("3/4")
 								.getValue(), 0.75, 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("4/5")
-								.getValue(), 0.8, 0.0);
+	/**
+	 * The expression "16/4/2" should be parsed as "(16/4)/2 = 2", not "16/(4/2) = 8". This is because division has a
+	 * left operator associativity.
+	 */
+	@Test
+	public void checkMultiple() {
+		assertEquals(2.0, mathieEnv.getExpression("16/4/2")
+									.getValue(), 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("(20/4)/5")
-								.getValue(), 1.0, 0.0);
+	@Test
+	public void checkNested() {
+		assertEquals(8.0, mathieEnv.getExpression("16/(4/2)")
+									.getValue(), 0.0);
+	}
 
-		assertTrue(Double.isInfinite(mathieEnv.getExpression("2/0")
-											.getValue()));
-
+	/**
+	 * Division by zero should leave us with Double.Infinity
+	 */
+	@Test
+	public void checkDivisionByZero() {
+		assertEquals(Double.POSITIVE_INFINITY, mathieEnv.getExpression("2/0")
+														.getValue(), 0.0);
 	}
 
 	@After

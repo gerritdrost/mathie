@@ -39,23 +39,38 @@ public class SubtractOperatorTest {
 	}
 
 	@Test
-	public void checkSubtractOperator() {
-		assertEquals(mathieEnv.getExpression("2-3")
-								.getValue(), -1.0, 0.0);
-
-		assertEquals(mathieEnv.getExpression("2-3-1")
-								.getValue(), -2.0, 0.0);
-
-		assertEquals(mathieEnv.getExpression("(6-3)-1")
-								.getValue(), 2.0, 0.0);
+	public void checkDefault() {
+		assertEquals(6.0, mathieEnv.getExpression("8-2")
+									.getValue(), 0.0);
 	}
 
+	/**
+	 * Check with a nested expression that does not conform with the operator associativity
+	 */
+	@Test
+	public void checkNested() {
+		assertEquals(6.0, mathieEnv.getExpression("8-(4-2)")
+									.getValue(), 0.0);
+	}
+
+	/**
+	 * The expression "2-3-1" should be parsed as "(2-3)-1", not "2-(3-1)". This is because subtraction has a left
+	 * operator associativity.
+	 */
+	@Test
+	public void checkMultiple() {
+		assertEquals(mathieEnv.getExpression("2-3-1")
+								.getValue(), -2.0, 0.0);
+	}
+
+	/**
+	 * The SubtractOperator also handles the parsing of negative values by inserting a zero when encountering an empty
+	 * string as first argument. This checks if it works.
+	 */
 	@Test
 	public void checkMinusSign() {
-
 		assertEquals(mathieEnv.getExpression("-1")
 								.getValue(), -1.0, 0.0);
-
 	}
 
 	@After

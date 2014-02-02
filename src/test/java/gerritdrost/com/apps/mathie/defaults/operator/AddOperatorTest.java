@@ -39,15 +39,21 @@ public class AddOperatorTest {
 	}
 
 	@Test
-	public void checkAddOperator() {
-		assertEquals(mathieEnv.getExpression("2+3")
-								.getValue(), 5.0, 0.0);
+	public void checkDefault() {
+		assertEquals(3.0, mathieEnv.getExpression("2+1")
+									.getValue(), 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("2+3+1")
-								.getValue(), 6.0, 0.0);
+	@Test
+	public void checkMultiple() {
+		assertEquals(11.0, mathieEnv.getExpression("8+2+1")
+									.getValue(), 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("(6+3)+1")
-								.getValue(), 10.0, 0.0);
+	@Test
+	public void checkNested() {
+		assertEquals(11.0, mathieEnv.getExpression("(8+2)+1")
+									.getValue(), 0.0);
 	}
 
 	@After

@@ -40,14 +40,27 @@ public class PowerOperatorTest {
 
 	@Test
 	public void checkDefault() {
-		assertEquals(mathieEnv.getExpression("3^4")
-								.getValue(), 81.0, 0.0);
+		assertEquals(16.0, mathieEnv.getExpression("2^4")
+									.getValue(), 0.0);
 	}
 
+	/**
+	 * Checks for the right operator associativity (pun intended). When the operator associativity is right, the result
+	 * will be 512. When it is left (thus wrong), the result is 64.
+	 */
+	@Test
+	public void checkMultiple() {
+		assertEquals(65536.0, mathieEnv.getExpression("2^4^2")
+										.getValue(), 0.0);
+	}
+
+	/**
+	 * Check with a nested expression that does not conform with the operator associativity
+	 */
 	@Test
 	public void checkNested() {
-		assertEquals(mathieEnv.getExpression("(3^2)^2")
-								.getValue(), 81.0, 0.0);
+		assertEquals(256.0, mathieEnv.getExpression("(2^4)^2")
+									.getValue(), 0.0);
 	}
 
 	/**
@@ -57,17 +70,6 @@ public class PowerOperatorTest {
 	public void checkToZero() {
 		assertEquals(mathieEnv.getExpression("10^0")
 								.getValue(), 1.0, 0.0);
-
-	}
-
-	/**
-	 * Checks for the right operator associativity (pun intended). When the operator associativity is right, the result
-	 * will be 512. When it is left (thus wrong), the result is 64.
-	 */
-	@Test
-	public void checkAssociativity() {
-		assertEquals(mathieEnv.getExpression("2^3^2")
-								.getValue(), 512.0, 0.0);
 	}
 
 	@After
