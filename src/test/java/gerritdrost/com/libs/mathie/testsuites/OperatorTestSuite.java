@@ -8,6 +8,7 @@ import gerritdrost.com.libs.mathie.defaults.operator.PowerOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.SineOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.TangentOperatorTest;
+import gerritdrost.com.libs.mathie.operator.GroupedInfixOperatorTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -15,7 +16,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ AddOperatorTest.class, SubtractOperatorTest.class, MultiplyOperatorTest.class, DivideOperatorTest.class,
-				PowerOperatorTest.class, SineOperatorTest.class, CosineOperatorTest.class, TangentOperatorTest.class })
+				PowerOperatorTest.class, SineOperatorTest.class, CosineOperatorTest.class, TangentOperatorTest.class,
+				GroupedInfixOperatorTest.class })
 public class OperatorTestSuite {
 
 }

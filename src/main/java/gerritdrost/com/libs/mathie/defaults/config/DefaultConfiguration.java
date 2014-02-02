@@ -9,6 +9,7 @@ import gerritdrost.com.libs.mathie.defaults.operator.SineOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.ValueOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.VariableOperator;
+import gerritdrost.com.libs.mathie.operator.GroupedInfixOperator;
 import gerritdrost.com.libs.mathie.operator.Operator;
 import gerritdrost.com.libs.mathie.util.Pair;
 
@@ -28,10 +29,14 @@ public class DefaultConfiguration
 	public Collection<Operator> getOrderedOperators() {
 		// @formatter:off 
 		return Arrays.asList(new Operator[] { 
-              new AddOperator(), 
-              new SubtractOperator(), 
-              new MultiplyOperator(), 
-              new DivideOperator(),
+              new GroupedInfixOperator(
+                  new AddOperator(), 
+                  new SubtractOperator()
+              ),
+              new GroupedInfixOperator(
+	              new MultiplyOperator(), 
+	              new DivideOperator()
+              ),
               new PowerOperator(), 
               new SineOperator(),
               new ValueOperator(),
