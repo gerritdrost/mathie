@@ -61,21 +61,21 @@ public class MathieTest {
 ```
 # Supported operators/functions
 These operators and functions are currently supported. More are being implemented.
-* '+' - Addition
-* '-' - Subtraction
-* '*' - Multiplication
-* '/' - Division
-* '^' - Exponentiation
-* abs(a) - Modulus
-* sin(a) - Sine
-* cos(a) - Cosine
-* tan(a) - Tangent
-* sec(a) - Secant
-* csc(a) - Cosecant
-* cot(a) - Cotangent
+- '+' - Addition
+- '-' - Subtraction
+- '*' - Multiplication
+- '/' - Division
+- '^' - Exponentiation
+- abs(a) - Modulus
+- sin(a) - Sine
+- cos(a) - Cosine
+- tan(a) - Tangent
+- sec(a) - Secant
+- csc(a) - Cosecant
+- cot(a) - Cotangent
  
 # License
 Mathie is provided under the MIT license. More info: 
-* [the LICENSE-file](LICENSE)
-* [tldrlegal.com](http://www.tldrlegal.com/license/mit-license)
+- [the LICENSE-file](LICENSE)
+- [tldrlegal.com](http://www.tldrlegal.com/license/mit-license)
 * [opensource.org](http://www.opensource.org/licenses/mit-license.php)
