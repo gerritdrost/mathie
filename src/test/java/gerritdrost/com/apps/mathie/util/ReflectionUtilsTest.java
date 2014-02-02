@@ -81,12 +81,10 @@ public class ReflectionUtilsTest {
 
 		for (String fieldName : fieldNames) {
 
-			System.out.printf("Looking for field %s:\n", fieldName);
 			boolean foundOne = false;
 			for (Field field : fields) {
 				if (field.getName()
 							.equals(fieldName)) {
-					System.out.printf("\tFound field with name %s:\n\t\t%s.\n", fieldName, field);
 					foundOne = true;
 					break;
 				}
