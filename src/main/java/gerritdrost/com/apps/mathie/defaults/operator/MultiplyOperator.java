@@ -7,7 +7,7 @@ public class MultiplyOperator
 		extends InfixOperator {
 
 	public MultiplyOperator() {
-		super('*');
+		super('*', OperatorAssociativity.LEFT);
 	}
 
 	@Override

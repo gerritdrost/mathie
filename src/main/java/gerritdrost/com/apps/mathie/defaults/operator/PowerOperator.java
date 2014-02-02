@@ -7,7 +7,7 @@ public class PowerOperator
 		extends InfixOperator {
 
 	public PowerOperator() {
-		super('^');
+		super('^', OperatorAssociativity.RIGHT);
 	}
 
 	@Override

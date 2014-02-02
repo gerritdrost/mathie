@@ -7,7 +7,7 @@ public class SubtractOperator
 		extends InfixOperator {
 
 	public SubtractOperator() {
-		super('-');
+		super('-', OperatorAssociativity.LEFT);
 	}
 
 	@Override

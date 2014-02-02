@@ -7,7 +7,7 @@ public class DivideOperator
 		extends InfixOperator {
 
 	public DivideOperator() {
-		super('/');
+		super('/', OperatorAssociativity.LEFT);
 	}
 
 	@Override
