@@ -2,9 +2,11 @@ package gerritdrost.com.apps.mathie.defaults.operator;
 
 import static org.junit.Assert.assertEquals;
 import gerritdrost.com.apps.mathie.ExpressionEnvironment;
-import gerritdrost.com.apps.mathie.defaults.config.DefaultConfiguration;
+import gerritdrost.com.apps.mathie.config.Configuration;
 import gerritdrost.com.apps.mathie.operator.Operator;
+import gerritdrost.com.apps.mathie.util.Pair;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -21,11 +23,16 @@ public class AddOperatorTest {
 
 	@Before
 	public void setup() {
-		mathieEnv = new ExpressionEnvironment(new DefaultConfiguration() {
+		mathieEnv = new ExpressionEnvironment(new Configuration() {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
 				return Arrays.asList(new Operator[] { new AddOperator(), new ValueOperator() });
+			}
+
+			@Override
+			public Collection<Pair<String, Double>> getDefaultVariables() {
+				return new ArrayList<Pair<String, Double>>();
 			}
 
 		});

@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SubtractOperatorTest {
+public class MultiplyOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
 
@@ -27,7 +27,7 @@ public class SubtractOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new SubtractOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new MultiplyOperator(), new ValueOperator() });
 			}
 
 			@Override
@@ -39,23 +39,15 @@ public class SubtractOperatorTest {
 	}
 
 	@Test
-	public void checkSubtractOperator() {
-		assertEquals(mathieEnv.getExpression("2-3")
-								.getValue(), -1.0, 0.0);
+	public void checkMultiplyOperator() {
+		assertEquals(mathieEnv.getExpression("2*3")
+								.getValue(), 6.0, 0.0);
 
-		assertEquals(mathieEnv.getExpression("2-3-1")
-								.getValue(), -2.0, 0.0);
+		assertEquals(mathieEnv.getExpression("4*3*2")
+								.getValue(), 24.0, 0.0);
 
-		assertEquals(mathieEnv.getExpression("(6-3)-1")
-								.getValue(), 2.0, 0.0);
-	}
-
-	@Test
-	public void checkMinusSign() {
-
-		assertEquals(mathieEnv.getExpression("-1")
-								.getValue(), -1.0, 0.0);
-
+		assertEquals(mathieEnv.getExpression("(6*3)*3")
+								.getValue(), 54.0, 0.0);
 	}
 
 	@After

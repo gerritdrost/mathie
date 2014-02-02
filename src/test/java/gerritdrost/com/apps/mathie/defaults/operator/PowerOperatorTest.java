@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SubtractOperatorTest {
+public class PowerOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
 
@@ -27,7 +27,7 @@ public class SubtractOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new SubtractOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new PowerOperator(), new ValueOperator() });
 			}
 
 			@Override
@@ -39,23 +39,35 @@ public class SubtractOperatorTest {
 	}
 
 	@Test
-	public void checkSubtractOperator() {
-		assertEquals(mathieEnv.getExpression("2-3")
-								.getValue(), -1.0, 0.0);
-
-		assertEquals(mathieEnv.getExpression("2-3-1")
-								.getValue(), -2.0, 0.0);
-
-		assertEquals(mathieEnv.getExpression("(6-3)-1")
-								.getValue(), 2.0, 0.0);
+	public void checkDefault() {
+		assertEquals(mathieEnv.getExpression("3^4")
+								.getValue(), 81.0, 0.0);
 	}
 
 	@Test
-	public void checkMinusSign() {
+	public void checkNested() {
+		assertEquals(mathieEnv.getExpression("(3^2)^2")
+								.getValue(), 81.0, 0.0);
+	}
 
-		assertEquals(mathieEnv.getExpression("-1")
-								.getValue(), -1.0, 0.0);
+	/**
+	 * Something to the power of 0 should be 1.
+	 */
+	@Test
+	public void checkToZero() {
+		assertEquals(mathieEnv.getExpression("10^0")
+								.getValue(), 1.0, 0.0);
 
+	}
+
+	/**
+	 * Checks for the right operator associativity (pun intended). When the operator associativity is right, the result
+	 * will be 512. When it is left (thus wrong), the result is 64.
+	 */
+	@Test
+	public void checkAssociativity() {
+		assertEquals(mathieEnv.getExpression("2^3^2")
+								.getValue(), 512.0, 0.0);
 	}
 
 	@After

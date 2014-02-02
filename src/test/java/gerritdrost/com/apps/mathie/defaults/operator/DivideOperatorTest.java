@@ -1,6 +1,7 @@
 package gerritdrost.com.apps.mathie.defaults.operator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import gerritdrost.com.apps.mathie.ExpressionEnvironment;
 import gerritdrost.com.apps.mathie.config.Configuration;
 import gerritdrost.com.apps.mathie.operator.Operator;
@@ -17,7 +18,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SubtractOperatorTest {
+public class DivideOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
 
@@ -27,7 +28,7 @@ public class SubtractOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new SubtractOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new DivideOperator(), new ValueOperator() });
 			}
 
 			@Override
@@ -39,22 +40,18 @@ public class SubtractOperatorTest {
 	}
 
 	@Test
-	public void checkSubtractOperator() {
-		assertEquals(mathieEnv.getExpression("2-3")
-								.getValue(), -1.0, 0.0);
+	public void checkDivideOperator() {
+		assertEquals(mathieEnv.getExpression("3/4")
+								.getValue(), 0.75, 0.0);
 
-		assertEquals(mathieEnv.getExpression("2-3-1")
-								.getValue(), -2.0, 0.0);
+		assertEquals(mathieEnv.getExpression("4/5")
+								.getValue(), 0.8, 0.0);
 
-		assertEquals(mathieEnv.getExpression("(6-3)-1")
-								.getValue(), 2.0, 0.0);
-	}
+		assertEquals(mathieEnv.getExpression("(20/4)/5")
+								.getValue(), 1.0, 0.0);
 
-	@Test
-	public void checkMinusSign() {
-
-		assertEquals(mathieEnv.getExpression("-1")
-								.getValue(), -1.0, 0.0);
+		assertTrue(Double.isInfinite(mathieEnv.getExpression("2/0")
+											.getValue()));
 
 	}
 
