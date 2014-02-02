@@ -6,8 +6,9 @@ Using annotations and some injection code, Mathie makes it possible to use expre
 ### Quick
 Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still pretty quick as well).
 ### Extendable
-Need a function or operator not implemented? You can easily extend Mathie to do so!
+Missing a function/operator? Create an issue if you think it should be included by default or easily extend Mathie if it's a project specific operator!
 # Examples
+More solid documentation is to follow soon. For now, here are some examples:
 ## Bare java
 ```java
 public class MathieTest {
@@ -60,7 +61,7 @@ public class MathieTest implements Injectable {
 ```
 
 # License
-Mathie uses the MIT license. More info: 
+Mathie is provided under the MIT license. More info: 
 * [the LICENSE-file](LICENSE)
 * [tldrlegal.com](http://www.tldrlegal.com/license/mit-license)
 * [opensource.org](http://www.opensource.org/licenses/mit-license.php)
