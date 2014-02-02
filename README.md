@@ -78,4 +78,4 @@ These operators and functions are currently supported. More are being implemente
 Mathie is provided under the MIT license. More info: 
 - [the LICENSE-file](LICENSE)
 - [tldrlegal.com](http://www.tldrlegal.com/license/mit-license)
-* [opensource.org](http://www.opensource.org/licenses/mit-license.php)
+- [opensource.org](http://www.opensource.org/licenses/mit-license.php)
