@@ -3,10 +3,13 @@ package gerritdrost.com.libs.mathie.defaults.config;
 import gerritdrost.com.libs.mathie.config.Configuration;
 import gerritdrost.com.libs.mathie.defaults.operator.AbsOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.AddOperator;
+import gerritdrost.com.libs.mathie.defaults.operator.CosecantOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.CosineOperator;
+import gerritdrost.com.libs.mathie.defaults.operator.CotangentOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.DivideOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.MultiplyOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.PowerOperator;
+import gerritdrost.com.libs.mathie.defaults.operator.SecantOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SineOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.TangentOperator;
@@ -44,7 +47,10 @@ public class DefaultConfiguration
               new AbsOperator(),
               new SineOperator(),
               new CosineOperator(),
+              new SecantOperator(),
+              new CosecantOperator(),
               new TangentOperator(),
+              new CotangentOperator(),
               new ValueOperator(),
               new VariableOperator()
 		});
