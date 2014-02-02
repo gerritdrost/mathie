@@ -1,6 +1,6 @@
 package gerritdrost.com.apps.mathie.defaults.config;
 
-import gerritdrost.com.apps.mathie.config.MathieGraphConfiguration;
+import gerritdrost.com.apps.mathie.config.Configuration;
 import gerritdrost.com.apps.mathie.defaults.operator.AddOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.DivideOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.MultiplyOperator;
@@ -21,8 +21,8 @@ import java.util.Collection;
  * @author Gerrit Drost <mail@gerritdrost.com>
  * 
  */
-public class DefaultMathieGraphConfiguration
-		implements MathieGraphConfiguration {
+public class DefaultConfiguration
+		implements Configuration {
 
 	@Override
 	public Collection<Operator> getOrderedOperators() {

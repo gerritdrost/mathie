@@ -1,6 +1,6 @@
 package gerritdrost.com.apps.mathie.injector;
 
-import gerritdrost.com.apps.mathie.MathieEnvironment;
+import gerritdrost.com.apps.mathie.ExpressionEnvironment;
 import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.injector.annotations.Environment;
@@ -29,7 +29,7 @@ public class MathieInjector {
 	 * Contains global environments that can be shared between instances. Note that these are only global for this
 	 * injector, the variable is not static.
 	 */
-	private final HashMap<String, MathieEnvironment> globalEnvironmentMap = new HashMap<String, MathieEnvironment>();
+	private final HashMap<String, ExpressionEnvironment> globalEnvironmentMap = new HashMap<String, ExpressionEnvironment>();
 
 	/**
 	 * Creates a new Environment. If you implemented your own MathieEnvironment, override this to return instances of
@@ -37,8 +37,8 @@ public class MathieInjector {
 	 * 
 	 * @return
 	 */
-	protected MathieEnvironment createEnvironment() {
-		return new MathieEnvironment();
+	protected ExpressionEnvironment createEnvironment() {
+		return new ExpressionEnvironment();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class MathieInjector {
 	 *            the name of the environment
 	 * @return
 	 */
-	protected MathieEnvironment getGlobalEnvironment(String globalEnvironmentName) {
+	protected ExpressionEnvironment getGlobalEnvironment(String globalEnvironmentName) {
 
 		if (!globalEnvironmentMap.containsKey(globalEnvironmentName))
 			globalEnvironmentMap.put(globalEnvironmentName, createEnvironment());
@@ -67,7 +67,7 @@ public class MathieInjector {
 
 		Class clazz = object.getClass();
 
-		MathieEnvironment environment = createEnvironment();
+		ExpressionEnvironment environment = createEnvironment();
 
 		// Class annotations first to determine the default environment to use
 		for (Annotation annotation : clazz.getAnnotations()) {
@@ -90,7 +90,7 @@ public class MathieInjector {
 								.isAssignableFrom(Expression.class) && annotation instanceof Formula) {
 					injectExpression(environment, (Formula) annotation, object, field);
 				} else if (field.getType()
-								.isAssignableFrom(MathieEnvironment.class) && annotation instanceof Environment) {
+								.isAssignableFrom(ExpressionEnvironment.class) && annotation instanceof Environment) {
 					injectEnvironment(environment, (Environment) annotation, object, field);
 				}
 
@@ -114,7 +114,7 @@ public class MathieInjector {
 	 * @param environmentField
 	 *            the field of the object that needs to be injected
 	 */
-	protected void injectEnvironment(MathieEnvironment environment, Environment environmentAnnotation, Object object, Field environmentField) {
+	protected void injectEnvironment(ExpressionEnvironment environment, Environment environmentAnnotation, Object object, Field environmentField) {
 
 		environment = chooseEnvironment(environment, environmentAnnotation.env());
 
@@ -140,7 +140,7 @@ public class MathieInjector {
 	 * @param expressionField
 	 *            the field of the object that needs to be injected
 	 */
-	protected void injectExpression(MathieEnvironment environment, Formula expressionAnnotation, Object object, Field expressionField) {
+	protected void injectExpression(ExpressionEnvironment environment, Formula expressionAnnotation, Object object, Field expressionField) {
 
 		// Both value() and expr() can be the expression string. Bit of a hack but it makes it possible to have a
 		// shorter formula annotation when no other variables need to be defined.
@@ -182,7 +182,7 @@ public class MathieInjector {
 	 * @param variableField
 	 *            the field of the object that needs to be injected
 	 */
-	protected void injectVariable(MathieEnvironment environment, Var variableAnnotation, Object object, Field variableField) {
+	protected void injectVariable(ExpressionEnvironment environment, Var variableAnnotation, Object object, Field variableField) {
 
 		// Both value() and name() can be the variable name. Bit of a hack but it makes it possible to have a
 		// shorter variable annotation when no other variables need to be defined.
@@ -221,7 +221,7 @@ public class MathieInjector {
 	 *            name of the global environment to load
 	 * @return
 	 */
-	protected MathieEnvironment chooseEnvironment(MathieEnvironment environment, String globalEnvironmentName) {
+	protected ExpressionEnvironment chooseEnvironment(ExpressionEnvironment environment, String globalEnvironmentName) {
 		if (globalEnvironmentName.length() == 0)
 			return environment;
 		else

@@ -11,7 +11,7 @@ import java.util.Collection;
  * @author Gerrit Drost <mail@gerritdrost.com>
  * 
  */
-public interface MathieGraphConfiguration {
+public interface Configuration {
 
 	public Collection<Operator> getOrderedOperators();
 

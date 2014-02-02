@@ -1,7 +1,7 @@
 package gerritdrost.com.apps.mathie;
 
-import gerritdrost.com.apps.mathie.config.MathieGraphConfiguration;
-import gerritdrost.com.apps.mathie.defaults.config.DefaultMathieGraphConfiguration;
+import gerritdrost.com.apps.mathie.config.Configuration;
+import gerritdrost.com.apps.mathie.defaults.config.DefaultConfiguration;
 import gerritdrost.com.apps.mathie.defaults.expression.Variable;
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.operator.Operator;
@@ -18,19 +18,19 @@ import java.util.Set;
  * @author Gerrit Drost <mail@gerritdrost.com>
  * 
  */
-public class MathieEnvironment {
+public class ExpressionEnvironment {
 
 	protected Set<Expression> nodes = new HashSet<Expression>();
 	protected HashMap<String, Expression> expressionMap = new HashMap<String, Expression>();
 	protected HashMap<String, Variable> variableMap = new HashMap<String, Variable>();
-	protected MathieGraphConfiguration operatorConfiguration = new DefaultMathieGraphConfiguration();
+	protected Configuration operatorConfiguration = new DefaultConfiguration();
 
 	/**
 	 * Constructs the environment, overwriting the default MathieGraphConfiguration
 	 * 
 	 * @param operatorConfiguration
 	 */
-	public MathieEnvironment(MathieGraphConfiguration operatorConfiguration) {
+	public ExpressionEnvironment(Configuration operatorConfiguration) {
 		this.operatorConfiguration = operatorConfiguration;
 		initializeVariables();
 	}
@@ -40,7 +40,7 @@ public class MathieEnvironment {
 	 * 
 	 * @param operatorConfiguration
 	 */
-	public MathieEnvironment() {
+	public ExpressionEnvironment() {
 		initializeVariables();
 	}
 
