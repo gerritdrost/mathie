@@ -8,6 +8,6 @@ public abstract class Operator {
 
 	public abstract String[] getChildExpressions(String expression);
 
-	public abstract Expression create(String epxression, Expression[] children);
+	public abstract Expression create(String expressionString, Expression[] children);
 
 }

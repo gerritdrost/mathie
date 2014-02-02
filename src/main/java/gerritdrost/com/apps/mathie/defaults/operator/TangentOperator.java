@@ -11,8 +11,8 @@ public class TangentOperator
 	}
 
 	@Override
-	public Expression create(String expression, Expression[] children) {
-		return new Expression(children) {
+	public Expression create(String expressionString, Expression[] children) {
+		return new Expression(expressionString, children) {
 
 			@Override
 			public void recalculate() {

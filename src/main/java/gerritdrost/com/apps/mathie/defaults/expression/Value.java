@@ -5,8 +5,8 @@ import gerritdrost.com.apps.mathie.expression.Expression;
 public class Value
 		extends Expression {
 
-	public Value(double value) {
-		super(new Expression[0]);
+	public Value(String expressionString, double value) {
+		super(expressionString, new Expression[0]);
 		this.value = value;
 	}
 
