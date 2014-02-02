@@ -17,13 +17,13 @@ public abstract class InfixOperator
 
 		int openBrackets = 0;
 
-		for (int i = 0; i < expression.length(); i++) {
+		for (int i = expression.length() - 1; i >= 0; i--) {
 
 			char c = expression.charAt(i);
 
-			if (c == '(')
+			if (c == ')')
 				openBrackets++;
-			else if (c == ')')
+			else if (c == '(')
 				openBrackets--;
 			else if (openBrackets == 0 && c == operatorChar)
 				return i;
