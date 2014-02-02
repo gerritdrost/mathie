@@ -9,27 +9,6 @@ Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still 
 Missing a function/operator? Create an issue if you think it should be included by default or easily extend Mathie if it's a project specific operator!
 # Examples
 More solid documentation is to follow soon. For now, here are some examples:
-## Bare java
-```java
-public class MathieTest {
-
-	public MathieTest() {
-		ExpressionEnvironment t = new ExpressionEnvironment();
-
-		Expression e = t.getExpression("2*x");
-
-		// when variables are initialized, they are set to 1.0
-		System.out.println(e);
-
-		// let's get that variable object
-		Variable x = t.getVariable("x");
-		x.set(5.0);
-
-		// Re-evaluation is done automagically
-		System.out.println(e);
-	}
-}
-```
 ## Using annotations
 ```java
 public class MathieTest implements Injectable {
@@ -56,6 +35,27 @@ public class MathieTest implements Injectable {
 		x.set(8.0);
 		// 16.0/8.0 obviously is 2.0
 		System.out.println(exp1);
+	}
+}
+```
+## Bare java
+```java
+public class MathieTest {
+
+	public MathieTest() {
+		ExpressionEnvironment t = new ExpressionEnvironment();
+
+		Expression e = t.getExpression("2*x");
+
+		// when variables are initialized, they are set to 1.0
+		System.out.println(e);
+
+		// let's get that variable object
+		Variable x = t.getVariable("x");
+		x.set(5.0);
+
+		// Re-evaluation is done automagically
+		System.out.println(e);
 	}
 }
 ```
