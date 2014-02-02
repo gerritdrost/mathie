@@ -5,7 +5,7 @@ import gerritdrost.com.apps.mathie.defaults.operator.AddOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.DivideOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.MultiplyOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.PowerOperator;
-import gerritdrost.com.apps.mathie.defaults.operator.SinOperator;
+import gerritdrost.com.apps.mathie.defaults.operator.SineOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.SubtractOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.ValueOperator;
 import gerritdrost.com.apps.mathie.defaults.operator.VariableOperator;
@@ -33,7 +33,7 @@ public class DefaultConfiguration
               new MultiplyOperator(), 
               new DivideOperator(),
               new PowerOperator(), 
-              new SinOperator(),
+              new SineOperator(),
               new ValueOperator(),
               new VariableOperator()
 		});

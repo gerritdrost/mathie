@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SinOperatorTest {
+public class SineOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
 
@@ -27,7 +27,7 @@ public class SinOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new SinOperator(), new VariableOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new SineOperator(), new VariableOperator(), new ValueOperator() });
 			}
 
 		});

@@ -3,10 +3,10 @@ package gerritdrost.com.apps.mathie.defaults.operator;
 import gerritdrost.com.apps.mathie.expression.Expression;
 import gerritdrost.com.apps.mathie.operator.FunctionOperator;
 
-public class SinOperator
+public class SineOperator
 		extends FunctionOperator {
 
-	public SinOperator() {
+	public SineOperator() {
 		super("sin", 1);
 	}
 
