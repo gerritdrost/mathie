@@ -56,6 +56,7 @@ public class MathieTest implements Injectable {
 		// 16.0/8.0 obviously is 2.0
 		System.out.println(exp1);
 	}
+}
 ```
 
 # License
