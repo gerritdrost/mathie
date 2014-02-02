@@ -6,29 +6,9 @@ Using annotations and some injection code, Mathie makes it possible to use expre
 ### Quick
 Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still pretty quick as well).
 ### Extendable
-Need a function or operator not implemented? You can easily extend Mathie to do so!
+Missing a function/operator? Create an issue if you think it should be included by default or easily extend Mathie if it's a project specific operator!
 # Examples
-## Bare java
-```java
-public class MathieTest {
-
-	public MathieTest() {
-		ExpressionEnvironment t = new ExpressionEnvironment();
-
-		Expression e = t.getExpression("2*x");
-
-		// when variables are initialized, they are set to 1.0
-		System.out.println(e);
-
-		// let's get that variable object
-		Variable x = t.getVariable("x");
-		x.set(5.0);
-
-		// Re-evaluation is done automagically
-		System.out.println(e);
-	}
-}
-```
+More solid documentation is to follow soon. For now, here are some examples:
 ## Using annotations
 ```java
 public class MathieTest implements Injectable {
@@ -58,9 +38,44 @@ public class MathieTest implements Injectable {
 	}
 }
 ```
+## Bare java
+```java
+public class MathieTest {
 
+	public MathieTest() {
+		ExpressionEnvironment t = new ExpressionEnvironment();
+
+		Expression e = t.getExpression("2*x");
+
+		// when variables are initialized, they are set to 1.0
+		System.out.println(e);
+
+		// let's get that variable object
+		Variable x = t.getVariable("x");
+		x.set(5.0);
+
+		// Re-evaluation is done automagically
+		System.out.println(e);
+	}
+}
+```
+# Supported operators/functions
+These operators and functions are currently supported. More are being implemented.
+* '+' - Addition
+* '-' - Subtraction
+* '*' - Multiplication
+* '/' - Division
+* '^' - Exponentiation
+* abs(a) - Modulus
+* sin(a) - Sine
+* cos(a) - Cosine
+* tan(a) - Tangent
+* sec(a) - Secant
+* csc(a) - Cosecant
+* cot(a) - Cotangent
+ 
 # License
-Mathie uses the MIT license. More info: 
+Mathie is provided under the MIT license. More info: 
 * [the LICENSE-file](LICENSE)
 * [tldrlegal.com](http://www.tldrlegal.com/license/mit-license)
 * [opensource.org](http://www.opensource.org/licenses/mit-license.php)
