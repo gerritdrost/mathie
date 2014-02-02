@@ -4,7 +4,21 @@
 	<groupId>com.gerritdrost</groupId>
 	<artifactId>mathie</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name></name>
+	<name>Mathie</name>
+	<description>A quick mathematical expression framework.</description>
+	<url>http://gerritdrost.com/</url>
+
+	<licenses>
+		<license>
+			<name>The MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/gerritdrost/mathie.git</url>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -35,7 +49,7 @@
 					</includes>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
