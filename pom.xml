@@ -4,6 +4,7 @@
 	<groupId>com.gerritdrost</groupId>
 	<artifactId>mathie</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name></name>
 
 	<dependencies>
 		<dependency>
@@ -12,11 +13,26 @@
 			<version>1.12.4</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.16</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<threadCount>4</threadCount>
+				</configuration>
+			</plugin>
+			
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
