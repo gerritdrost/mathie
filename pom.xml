@@ -29,7 +29,10 @@
 				<version>2.16</version>
 				<configuration>
 					<parallel>methods</parallel>
-					<threadCount>4</threadCount>
+					<threadCount>8</threadCount>
+					<includes>
+						<include>**/*TestSuite.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 			
