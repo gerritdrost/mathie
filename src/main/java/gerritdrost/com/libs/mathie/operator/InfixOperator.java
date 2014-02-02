@@ -1,17 +1,25 @@
 package gerritdrost.com.libs.mathie.operator;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 public abstract class InfixOperator
 		extends Operator {
 
+	@Getter
 	char operatorChar;
+
+	@Getter
 	OperatorAssociativity operatorAssociativity;
 
 	@Override
 	public boolean applies(String expression) {
-		return ((operatorAssociativity == OperatorAssociativity.LEFT ? findLeftOperator(expression) : findRightOperator(expression)) > -1);
+		return (findOperator(expression) > -1);
+	}
+
+	protected int findOperator(String expression) {
+		return (operatorAssociativity == OperatorAssociativity.LEFT ? findLeftOperator(expression) : findRightOperator(expression));
 	}
 
 	protected int findLeftOperator(String expression) {
