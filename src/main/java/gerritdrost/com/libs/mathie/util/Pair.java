@@ -19,6 +19,17 @@ public class Pair<A, B> {
 	B b;
 
 	/**
+	 * Sets both variables at once
+	 * 
+	 * @param a
+	 * @param b
+	 */
+	public void set(A a, B b) {
+		this.a = a;
+		this.b = b;
+	}
+
+	/**
 	 * Returns an instance of Pair with the given parameters.
 	 * 
 	 * @param a
