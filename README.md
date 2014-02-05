@@ -66,7 +66,7 @@ These operators and functions are currently supported. More are being implemente
 - '*' - Multiplication
 - '/' - Division
 - '^' - Exponentiation
-- abs(a) - Modulus
+- abs(a) - Absolute value
 - sin(a) - Sine
 - cos(a) - Cosine
 - tan(a) - Tangent
