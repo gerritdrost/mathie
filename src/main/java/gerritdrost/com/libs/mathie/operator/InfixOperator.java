@@ -1,8 +1,17 @@
 package gerritdrost.com.libs.mathie.operator;
 
+import gerritdrost.com.libs.mathie.util.BracketStringIterator;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * The infix operator can be extended for use by operators in infix-style like addition, subtraction, multiplication,
+ * etc. Given a operator-character, this class will do everything except calculate the actual value since that is
+ * operator specific.
+ * 
+ * @author Gerrit Drost <mail@gerritdrost.com>
+ * 
+ */
 @AllArgsConstructor
 public abstract class InfixOperator
 		extends Operator {
@@ -19,42 +28,17 @@ public abstract class InfixOperator
 	}
 
 	protected int findOperator(String expression) {
-		return (operatorAssociativity == OperatorAssociativity.LEFT ? findLeftOperator(expression) : findRightOperator(expression));
-	}
 
-	protected int findLeftOperator(String expression) {
+		BracketStringIterator iterator = BracketStringIterator.create(	expression,
+																		operatorAssociativity == OperatorAssociativity.LEFT	? BracketStringIterator.Direction.RIGHT_TO_LEFT
+																															: BracketStringIterator.Direction.LEFT_TO_RIGHT);
 
-		int openBrackets = 0;
+		while (iterator.hasNext()) {
 
-		for (int i = expression.length() - 1; i >= 0; i--) {
+			char c = iterator.next();
 
-			char c = expression.charAt(i);
-
-			if (c == ')')
-				openBrackets++;
-			else if (c == '(')
-				openBrackets--;
-			else if (openBrackets == 0 && c == operatorChar)
-				return i;
-		}
-
-		return -1;
-	}
-
-	protected int findRightOperator(String expression) {
-
-		int openBrackets = 0;
-
-		for (int i = 0; i < expression.length(); i++) {
-
-			char c = expression.charAt(i);
-
-			if (c == '(')
-				openBrackets++;
-			else if (c == ')')
-				openBrackets--;
-			else if (openBrackets == 0 && c == operatorChar)
-				return i;
+			if (c == operatorChar && iterator.getOpenedBrackets() == 0)
+				return iterator.getCurrentIndex();
 		}
 
 		return -1;
@@ -63,8 +47,7 @@ public abstract class InfixOperator
 	@Override
 	public String[] getChildExpressions(String expression) {
 
-		int operatorIndex = operatorAssociativity == OperatorAssociativity.LEFT	? findLeftOperator(expression)
-																				: findRightOperator(expression);
+		int operatorIndex = findOperator(expression);
 
 		return new String[] { expression.substring(0, operatorIndex), expression.substring(operatorIndex + 1, expression.length()) };
 

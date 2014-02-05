@@ -2,14 +2,13 @@ package gerritdrost.com.libs.mathie.defaults.operator;
 
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.FunctionOperator;
-import gerritdrost.com.libs.mathie.util.MathUtils;
 import gerritdrost.com.libs.mathie.util.Pair;
 
-public class CosecantOperator
+public class MinimumOperator
 		extends FunctionOperator {
 
-	public CosecantOperator() {
-		super("csc", Pair.create(1, 1));
+	protected MinimumOperator() {
+		super("min", Pair.create(2, Integer.MAX_VALUE));
 	}
 
 	@Override
@@ -18,7 +17,13 @@ public class CosecantOperator
 
 			@Override
 			public void recalculate() {
-				this.value = MathUtils.csc(children[0].getValue());
+				double minValue = Double.POSITIVE_INFINITY;
+
+				for (Expression child : children)
+					if (child.getValue() < minValue)
+						minValue = child.getValue();
+
+				this.value = minValue;
 			}
 
 		};

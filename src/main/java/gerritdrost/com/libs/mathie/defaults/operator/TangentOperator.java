@@ -2,12 +2,13 @@ package gerritdrost.com.libs.mathie.defaults.operator;
 
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.FunctionOperator;
+import gerritdrost.com.libs.mathie.util.Pair;
 
 public class TangentOperator
 		extends FunctionOperator {
 
 	public TangentOperator() {
-		super("tan", 1);
+		super("tan", Pair.create(1, 1));
 	}
 
 	@Override
