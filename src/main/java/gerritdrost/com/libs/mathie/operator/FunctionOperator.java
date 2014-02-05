@@ -1,30 +1,31 @@
 package gerritdrost.com.libs.mathie.operator;
 
 import static gerritdrost.com.libs.mathie.MathieConstants.FUNCTION_PARAMETER_SEPARATOR;
+import gerritdrost.com.libs.mathie.util.BracketStringIterator;
+import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.ArrayList;
+
+/**
+ * FunctionOperator should be extended when creating a function of the format "[function]([parameters])", like sin() or
+ * abs().
+ * 
+ * @author Gerrit Drost <mail@gerritdrost.com>
+ * 
+ */
 public abstract class FunctionOperator
 		extends Operator {
 
 	private String functionName;
-	private int parameterCount;
+	private Pair<Integer, Integer> parameterRange;
 	private String baseRegex;
 
-	protected FunctionOperator(String functionName, int parameterCount) {
+	protected FunctionOperator(String functionName, Pair<Integer, Integer> parameterRange) {
 
 		this.functionName = functionName;
-		this.parameterCount = parameterCount;
+		this.parameterRange = parameterRange;
 
-		StringBuilder builder = new StringBuilder();
-
-		builder.append(String.format("^%s\\(", functionName));
-
-		for (int i = 0; i < parameterCount; i++)
-			builder.append(String.format("%s%s", i > 0 ? FUNCTION_PARAMETER_SEPARATOR : "", ".*"));
-
-		builder.append("\\)");
-
-		baseRegex = builder.toString();
-
+		baseRegex = String.format("^%s\\(.*\\)", functionName);
 	}
 
 	@Override
@@ -32,32 +33,62 @@ public abstract class FunctionOperator
 		if (!expression.matches(baseRegex))
 			return false;
 
-		String parameterString = expression.substring(functionName.length(), expression.length());
+		String parameterString = getParametersPart(expression);
 
-		int bracketCount = 1;
+		// an iterator to count the brackets
+		BracketStringIterator bracketIterator = BracketStringIterator.create(parameterString, BracketStringIterator.Direction.LEFT_TO_RIGHT);
 
-		for (int i = 1; i < parameterString.length() - 1; i++) {
-			char c = parameterString.charAt(i);
+		int parameters = 1;
 
-			if (c == '(')
-				bracketCount++;
-			if (c == ')')
-				bracketCount--;
+		while (bracketIterator.hasNext()) {
+			char c = bracketIterator.next();
 
-			if (bracketCount == 0)
+			if (bracketIterator.getOpenedBrackets() < 0)
 				return false;
+			else if (c == ',' && bracketIterator.getOpenedBrackets() == 0)
+				parameters++;
 		}
 
-		return true;
+		return parameterRange.getA() <= parameters && parameterRange.getB() >= parameters;
 
+	}
+
+	protected String getParametersPart(String expression) {
+		return expression.substring(functionName.length() + 1, expression.length() - 1);
+	}
+
+	protected String[] splitExpression(String expression) {
+
+		// temporary list to store the parameters in
+		ArrayList<String> parameters = new ArrayList<>();
+
+		// the string we'll get the parameters from
+		String parameterString = getParametersPart(expression);
+
+		// an iterator to count the brackets
+		BracketStringIterator bracketIterator = BracketStringIterator.create(parameterString, BracketStringIterator.Direction.LEFT_TO_RIGHT);
+
+		String currentParameter = "";
+		while (bracketIterator.hasNext()) {
+
+			char c = bracketIterator.next();
+
+			if (c == FUNCTION_PARAMETER_SEPARATOR && bracketIterator.getOpenedBrackets() == 0) {
+				parameters.add(currentParameter);
+				currentParameter = "";
+			}
+
+			currentParameter += c;
+		}
+
+		// Also add the last parameter
+		parameters.add(currentParameter);
+
+		return parameters.toArray(new String[0]);
 	}
 
 	@Override
 	public String[] getChildExpressions(String expression) {
-
-		String parameterString = expression.substring(functionName.length(), expression.length());
-		
-		return parameterString.split(Character.toString(FUNCTION_PARAMETER_SEPARATOR));
-
+		return splitExpression(expression);
 	}
 }
