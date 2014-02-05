@@ -73,6 +73,8 @@ These operators and functions are currently supported. More are being implemente
 - sec(a) - Secant
 - csc(a) - Cosecant
 - cot(a) - Cotangent
+- min(a,b,c,...) - Returns the lowest value of at least 2 parameters
+- max(a,b,c,...) - Returns the highest value of at least 2 parameters
  
 # License
 Mathie is provided under the MIT license. More info: 
