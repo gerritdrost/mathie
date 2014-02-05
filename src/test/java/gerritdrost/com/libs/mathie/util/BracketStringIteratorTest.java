@@ -17,7 +17,7 @@ import org.junit.runners.JUnit4;
 public class BracketStringIteratorTest {
 
 	@Test
-	public void negativeBracketCount() {
+	public void leftToRightNegativeBracketCount() {
 
 		String test = ")))((";
 
@@ -25,14 +25,23 @@ public class BracketStringIteratorTest {
 
 		iterator.next();
 		assertEquals(-1, iterator.getOpenedBrackets());
+		assertEquals(0, iterator.getCurrentIndex());
+		assertEquals(1, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-2, iterator.getOpenedBrackets());
+		assertEquals(1, iterator.getCurrentIndex());
+		assertEquals(2, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-3, iterator.getOpenedBrackets());
+		assertEquals(2, iterator.getCurrentIndex());
+		assertEquals(3, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-2, iterator.getOpenedBrackets());
+		assertEquals(3, iterator.getCurrentIndex());
+		assertEquals(4, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-1, iterator.getOpenedBrackets());
+		assertEquals(4, iterator.getCurrentIndex());
 
 		assertFalse(iterator.hasNext());
 	}
@@ -46,14 +55,23 @@ public class BracketStringIteratorTest {
 
 		iterator.next();
 		assertEquals(-1, iterator.getOpenedBrackets());
+		assertEquals(4, iterator.getCurrentIndex());
+		assertEquals(3, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-2, iterator.getOpenedBrackets());
+		assertEquals(3, iterator.getCurrentIndex());
+		assertEquals(2, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(-1, iterator.getOpenedBrackets());
+		assertEquals(2, iterator.getCurrentIndex());
+		assertEquals(1, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(0, iterator.getOpenedBrackets());
+		assertEquals(1, iterator.getCurrentIndex());
+		assertEquals(0, iterator.getNextIndex());
 		iterator.next();
 		assertEquals(1, iterator.getOpenedBrackets());
+		assertEquals(0, iterator.getCurrentIndex());
 
 		assertFalse(iterator.hasNext());
 	}

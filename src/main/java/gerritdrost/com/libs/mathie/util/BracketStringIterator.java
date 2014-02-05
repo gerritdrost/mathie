@@ -17,6 +17,7 @@ public class BracketStringIterator
 	private String string;
 	private Direction direction;
 	int i;
+	int step;
 
 	@Getter
 	int openedBrackets = 0;
@@ -25,6 +26,7 @@ public class BracketStringIterator
 		this.string = string;
 		this.direction = direction;
 		this.i = (direction == Direction.LEFT_TO_RIGHT) ? 0 : string.length() - 1;
+		this.step = (direction == Direction.LEFT_TO_RIGHT) ? 1 : (-1);
 	}
 
 	public static BracketStringIterator create(String iterableString, Direction direction) {
@@ -38,6 +40,7 @@ public class BracketStringIterator
 
 	@Override
 	public Character next() {
+
 		char c = string.charAt(i);
 
 		if ((c == '(' && direction == Direction.LEFT_TO_RIGHT) || (c == ')' && direction == Direction.RIGHT_TO_LEFT))
@@ -45,7 +48,7 @@ public class BracketStringIterator
 		else if ((c == ')' && direction == Direction.LEFT_TO_RIGHT) || (c == '(' && direction == Direction.RIGHT_TO_LEFT))
 			openedBrackets--;
 
-		i += (direction == Direction.LEFT_TO_RIGHT) ? 1 : (-1);
+		i += step;
 
 		return c;
 	}
@@ -58,6 +61,14 @@ public class BracketStringIterator
 	public static enum Direction {
 		RIGHT_TO_LEFT,
 		LEFT_TO_RIGHT
+	}
+
+	public int getCurrentIndex() {
+		return i - step;
+	}
+
+	public int getNextIndex() {
+		return i;
 	}
 
 }
