@@ -76,9 +76,9 @@ public abstract class FunctionOperator
 			if (c == FUNCTION_PARAMETER_SEPARATOR && bracketIterator.getOpenedBrackets() == 0) {
 				parameters.add(currentParameter);
 				currentParameter = "";
+			} else {
+				currentParameter += c;
 			}
-
-			currentParameter += c;
 		}
 
 		// Also add the last parameter
