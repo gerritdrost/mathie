@@ -2,12 +2,13 @@ package gerritdrost.com.libs.mathie.defaults.operator;
 
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.FunctionOperator;
+import gerritdrost.com.libs.mathie.util.Pair;
 
 public class CosineOperator
 		extends FunctionOperator {
 
 	public CosineOperator() {
-		super("cos", 1);
+		super("cos", Pair.create(1, 1));
 	}
 
 	@Override
