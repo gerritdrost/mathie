@@ -39,4 +39,8 @@ public class Variable
 		fireValueChanged(oldValue, newValue);
 	}
 
+	public void increment(double delta) {
+		set(value + delta);
+	}
+
 }

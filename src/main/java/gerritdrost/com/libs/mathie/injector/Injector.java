@@ -195,7 +195,7 @@ public class Injector {
 			variableName = variableAnnotation.value();
 
 		if (variableName.length() == 0)
-			throw new NoVariableNameDefinedException(object, variableField);
+			variableName = variableField.getName();
 
 		// We know the name, injection is next
 		environment = chooseEnvironment(environment, variableAnnotation.env());
