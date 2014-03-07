@@ -3,10 +3,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gerritdrost.libs.mathie</groupId>
 	<artifactId>mathie</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Mathie</name>
 	<description>A quick mathematical expression framework.</description>
 	<url>http://gerritdrost.com/</url>
+
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
 	<licenses>
 		<license>
@@ -17,8 +24,19 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/gerritdrost/mathie.git</url>
+		<connection>scm:git:git@github.com:gerritdrost/mathie.git</connection>
+		<developerConnection>scm:git:git@github.com:gerritdrost/mathie.git</developerConnection>
+		<url>git@github.com:gerritdrost/mathie.git</url>
 	</scm>
+
+	<developers>
+		<developer>
+			<id>gerritdrost</id>
+			<name>Gerrit Drost</name>
+			<email>mail@gerritdrost.com</email>
+			<timezone>Europe/Amsterdam</timezone>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<dependency>
@@ -27,17 +45,32 @@
 			<version>1.12.4</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.carrotsearch</groupId>
+			<artifactId>junit-benchmarks</artifactId>
+			<version>0.7.2</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.4.2</version>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
