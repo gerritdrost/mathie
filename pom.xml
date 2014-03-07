@@ -4,7 +4,7 @@
 	<groupId>com.gerritdrost.libs.mathie</groupId>
 	<artifactId>mathie</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Mathie</name>
 	<description>A quick mathematical expression framework.</description>
 	<url>http://gerritdrost.com/</url>
