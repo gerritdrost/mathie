@@ -9,7 +9,7 @@ import java.util.Comparator;
 public class MaximumOperator
 		extends FunctionOperator {
 
-	protected MaximumOperator() {
+	public MaximumOperator() {
 		super("max", Pair.create(2, Integer.MAX_VALUE));
 	}
 

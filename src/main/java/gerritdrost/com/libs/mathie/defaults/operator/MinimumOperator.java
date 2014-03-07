@@ -9,7 +9,7 @@ import java.util.Comparator;
 public class MinimumOperator
 		extends FunctionOperator {
 
-	protected MinimumOperator() {
+	public MinimumOperator() {
 		super("min", Pair.create(2, Integer.MAX_VALUE));
 	}
 
