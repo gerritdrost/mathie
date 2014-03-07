@@ -17,7 +17,7 @@ public class ValueComparator
 	@Override
 	public int compare(Double o1, Double o2) {
 
-		double diff = o2 - o1;
+		double diff = o1 - o2;
 
 		boolean equal = Math.abs(diff) < delta;
 
