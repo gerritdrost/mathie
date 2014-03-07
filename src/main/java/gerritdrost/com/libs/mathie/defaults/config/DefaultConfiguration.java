@@ -7,6 +7,7 @@ import gerritdrost.com.libs.mathie.defaults.operator.CosecantOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.CosineOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.CotangentOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.DivideOperator;
+import gerritdrost.com.libs.mathie.defaults.operator.EqualsOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.MaximumOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.MinimumOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.MultiplyOperator;
@@ -59,6 +60,7 @@ public class DefaultConfiguration
               new CotangentOperator(),
               new MaximumOperator(),
               new MinimumOperator(),
+              new EqualsOperator(),
               new ValueOperator(),
               new VariableOperator()
 		});
