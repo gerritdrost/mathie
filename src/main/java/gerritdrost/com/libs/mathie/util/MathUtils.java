@@ -20,4 +20,5 @@ public class MathUtils {
 		return 1.0 / Math.sin(a);
 	}
 
+
 }

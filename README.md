@@ -7,6 +7,15 @@ Using annotations and some injection code, Mathie makes it possible to use expre
 Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still pretty quick as well).
 ### Extendable
 Missing a function/operator? Create an issue if you think it should be included by default or easily extend Mathie if it's a project specific operator!
+# Using Mathie
+## Maven
+```xml
+<dependency>
+    <groupId>com.gerritdrost.libs.mathie</groupId>
+    <artifactId>mathie</artifactId>
+	<version>0.0.1</version>
+</dependency>
+```
 # Examples
 More solid documentation is to follow soon. For now, here are some examples:
 ## Using annotations
@@ -75,6 +84,7 @@ These operators and functions are currently supported. More are being implemente
 - cot(a) - Cotangent
 - min(a,b,c,...) - Returns the lowest value of at least 2 parameters
 - max(a,b,c,...) - Returns the highest value of at least 2 parameters
+- equals(a,b,c,...) - Returns 1.0 if all parameters are equal, returns 0.0 otherwise.
  
 # License
 Mathie is provided under the MIT license. More info: 

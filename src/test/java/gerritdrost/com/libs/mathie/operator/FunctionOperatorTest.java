@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.Comparator;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +23,7 @@ public class FunctionOperatorTest {
 		funcOperator = new FunctionOperator("a", Pair.create(2, 4)) {
 
 			@Override
-			public Expression create(String expressionString, Expression[] children) {
+			public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 				return new Expression(expressionString, children) {
 
 					@Override

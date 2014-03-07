@@ -4,15 +4,17 @@ import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.FunctionOperator;
 import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.Comparator;
+
 public class MaximumOperator
 		extends FunctionOperator {
 
-	protected MaximumOperator() {
+	public MaximumOperator() {
 		super("max", Pair.create(2, Integer.MAX_VALUE));
 	}
 
 	@Override
-	public Expression create(String expressionString, Expression[] children) {
+	public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 		return new Expression(expressionString, children) {
 
 			@Override

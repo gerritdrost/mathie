@@ -3,14 +3,13 @@ package gerritdrost.com.libs.mathie.defaults.operator;
 import static org.junit.Assert.assertEquals;
 import gerritdrost.com.libs.mathie.ExpressionEnvironment;
 import gerritdrost.com.libs.mathie.config.Configuration;
-import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperator;
-import gerritdrost.com.libs.mathie.defaults.operator.ValueOperator;
 import gerritdrost.com.libs.mathie.operator.Operator;
 import gerritdrost.com.libs.mathie.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,6 +34,11 @@ public class SubtractOperatorTest {
 			@Override
 			public Collection<Pair<String, Double>> getDefaultVariables() {
 				return new ArrayList<Pair<String, Double>>();
+			}
+
+			@Override
+			public Comparator<Double> getComparator() {
+				return null;
 			}
 
 		});

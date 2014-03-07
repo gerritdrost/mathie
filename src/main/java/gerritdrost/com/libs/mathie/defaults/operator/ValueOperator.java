@@ -4,6 +4,8 @@ import gerritdrost.com.libs.mathie.defaults.expression.Value;
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.Operator;
 
+import java.util.Comparator;
+
 public class ValueOperator
 		extends Operator {
 
@@ -23,7 +25,7 @@ public class ValueOperator
 	}
 
 	@Override
-	public Expression create(String expressionString, Expression[] children) {
+	public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 		return new Value(expressionString, Double.parseDouble(expressionString));
 	}
 

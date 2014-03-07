@@ -4,6 +4,8 @@ import gerritdrost.com.libs.mathie.defaults.expression.Variable;
 import gerritdrost.com.libs.mathie.expression.Expression;
 import gerritdrost.com.libs.mathie.operator.RegexOperator;
 
+import java.util.Comparator;
+
 public class VariableOperator
 		extends RegexOperator {
 
@@ -17,7 +19,7 @@ public class VariableOperator
 	}
 
 	@Override
-	public Expression create(String expression, Expression[] children) {
+	public Expression create(String expression, Expression[] children, Comparator<Double> comparator) {
 		return new Variable(expression);
 	}
 
