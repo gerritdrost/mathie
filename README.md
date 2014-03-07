@@ -7,6 +7,15 @@ Using annotations and some injection code, Mathie makes it possible to use expre
 Mathie's focus is quick (re-)evaluation, not fast parsing(although that's still pretty quick as well).
 ### Extendable
 Missing a function/operator? Create an issue if you think it should be included by default or easily extend Mathie if it's a project specific operator!
+# Using Mathie
+## Maven
+```xml
+<dependency>
+    <groupId>com.gerritdrost.libs.mathie</groupId>
+    <artifactId>mathie</artifactId>
+	<version>0.0.1</version>
+</dependency>
+```
 # Examples
 More solid documentation is to follow soon. For now, here are some examples:
 ## Using annotations

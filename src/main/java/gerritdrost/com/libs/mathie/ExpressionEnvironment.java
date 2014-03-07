@@ -8,6 +8,7 @@ import gerritdrost.com.libs.mathie.operator.Operator;
 import gerritdrost.com.libs.mathie.util.ExpressionUtils;
 import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -114,6 +115,8 @@ public class ExpressionEnvironment {
 
 		Expression newNode = null;
 
+		Comparator<Double> valueComparator = operatorConfiguration.getComparator();
+
 		for (Operator operator : operatorConfiguration.getOrderedOperators()) {
 			if (operator.applies(expression)) {
 
@@ -126,7 +129,7 @@ public class ExpressionEnvironment {
 					childNodes[i] = getExpression(childExpression);
 				}
 
-				newNode = operator.create(expression, childNodes);
+				newNode = operator.create(expression, childNodes, valueComparator);
 				break;
 			}
 		}

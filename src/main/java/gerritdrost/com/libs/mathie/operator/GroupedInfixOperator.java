@@ -5,6 +5,8 @@ import gerritdrost.com.libs.mathie.operator.InfixOperator.OperatorAssociativity;
 import gerritdrost.com.libs.mathie.operator.InvalidGroupedInfixOperatorException.ExceptionType;
 import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.Comparator;
+
 /**
  * Combines several InfixOperators into a single Operator, therefore making it possible to correctly parse combinations
  * of equal precedence like '+' and '-' or '*' and '/'.
@@ -61,9 +63,9 @@ public class GroupedInfixOperator
 	}
 
 	@Override
-	public Expression create(String expressionString, Expression[] children) {
+	public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 		return getDominatingOperator(expressionString).getA()
-														.create(expressionString, children);
+														.create(expressionString, children, comparator);
 	}
 
 	/**

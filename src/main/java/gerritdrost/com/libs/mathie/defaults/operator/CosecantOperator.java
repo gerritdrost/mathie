@@ -5,6 +5,8 @@ import gerritdrost.com.libs.mathie.operator.FunctionOperator;
 import gerritdrost.com.libs.mathie.util.MathUtils;
 import gerritdrost.com.libs.mathie.util.Pair;
 
+import java.util.Comparator;
+
 public class CosecantOperator
 		extends FunctionOperator {
 
@@ -13,7 +15,7 @@ public class CosecantOperator
 	}
 
 	@Override
-	public Expression create(String expressionString, Expression[] children) {
+	public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 		return new Expression(expressionString, children) {
 
 			@Override

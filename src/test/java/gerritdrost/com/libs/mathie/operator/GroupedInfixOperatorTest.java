@@ -13,6 +13,7 @@ import gerritdrost.com.libs.mathie.util.Pair;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 
 import org.junit.After;
 import org.junit.Before;
@@ -38,6 +39,11 @@ public class GroupedInfixOperatorTest {
 			@Override
 			public Collection<Pair<String, Double>> getDefaultVariables() {
 				return new ArrayList<Pair<String, Double>>();
+			}
+
+			@Override
+			public Comparator<Double> getComparator() {
+				return null;
 			}
 
 		});
@@ -103,7 +109,7 @@ public class GroupedInfixOperatorTest {
 		}
 
 		@Override
-		public Expression create(String expressionString, Expression[] children) {
+		public Expression create(String expressionString, Expression[] children, Comparator<Double> comparator) {
 			return null;
 		}
 
