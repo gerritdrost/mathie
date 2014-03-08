@@ -19,12 +19,12 @@ public class EqualsOperator
 
 			@Override
 			public void recalculate() {
-				double val = children[0].getValue();
+				double compareVal = children[0].getValue();
 				
 				value = 1.0;
 
 				for (int i = 1; i < children.length; i++) {
-					if (comparator.compare(val, children[i].getValue()) != 0) {
+					if (comparator.compare(compareVal, children[i].getValue()) != 0) {
 						value = 0.0;
 						return;
 					}
