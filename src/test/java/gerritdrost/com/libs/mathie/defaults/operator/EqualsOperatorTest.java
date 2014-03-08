@@ -20,8 +20,6 @@ import org.junit.runners.JUnit4;
 public class EqualsOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
-
-	private static final double DELTA = 1e-15;
 	
 	@Before
 	public void setup() {
@@ -29,7 +27,7 @@ public class EqualsOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new AddOperator(), new EqualsOperator(), new VariableOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new EqualsOperator(), new VariableOperator(), new ValueOperator() });
 			}
 
 			public Comparator<Double> getComparator() {
@@ -42,19 +40,19 @@ public class EqualsOperatorTest {
 	@Test
 	public void checkDefault() {
 		assertEquals(1.0, mathieEnv.getExpression("equals(1.0, 1.0)")
-									.getValue(), DELTA);
+									.getValue(), 0.0);
 	}
 
 	@Test
 	public void checkNested() {
 		assertEquals(1.0, mathieEnv.getExpression("equals(equals(2.0, 2.0),1.0)")
-									.getValue(), DELTA);
+									.getValue(), 0.0);
 	}
 
 	@Test
 	public void checkMultiple() {
 		assertEquals(1.0, mathieEnv.getExpression("equals(3.0, 3.0, 3.0)")
-									.getValue(), DELTA);
+									.getValue(), 0.0);
 	}
 
 	@Test
@@ -62,11 +60,11 @@ public class EqualsOperatorTest {
 
 		// delta is 0.1, so 1.0 <--> 1.05 should return 1.0;
 		assertEquals(1.0, mathieEnv.getExpression("equals(1.0,1.05)")
-									.getValue(), DELTA);
+									.getValue(), 0.0);
 
 		// delta is 0.1, so 1.0 <--> 1.15 should return 0.0;
 		assertEquals(0.0, mathieEnv.getExpression("equals(1.0,1.15)")
-									.getValue(), DELTA);
+									.getValue(), 0.0);
 	}
 
 	@After
