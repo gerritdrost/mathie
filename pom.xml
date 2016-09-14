@@ -3,7 +3,7 @@
 	<groupId>com.gerritdrost.libs.mathie</groupId>
 	<artifactId>mathie</artifactId>
 	<packaging>jar</packaging>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>Mathie</name>
 	<description>A quick mathematical expression framework.</description>
 	<url>http://gerritdrost.com/</url>
