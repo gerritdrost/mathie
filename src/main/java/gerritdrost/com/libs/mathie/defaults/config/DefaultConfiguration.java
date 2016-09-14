@@ -13,6 +13,7 @@ import gerritdrost.com.libs.mathie.defaults.operator.MinimumOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.MultiplyOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.PowerOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SecantOperator;
+import gerritdrost.com.libs.mathie.defaults.operator.SignumOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SineOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperator;
 import gerritdrost.com.libs.mathie.defaults.operator.TangentOperator;
@@ -61,6 +62,7 @@ public class DefaultConfiguration
               new MaximumOperator(),
               new MinimumOperator(),
               new EqualsOperator(),
+              new SignumOperator(),
               new ValueOperator(),
               new VariableOperator()
 		});

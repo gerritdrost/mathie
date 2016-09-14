@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class EqualsOperatorTest {
+public class SignumOperatorTest {
 
 	ExpressionEnvironment mathieEnv;
 	
@@ -27,7 +27,7 @@ public class EqualsOperatorTest {
 
 			@Override
 			public Collection<Operator> getOrderedOperators() {
-				return Arrays.asList(new Operator[] { new EqualsOperator(), new VariableOperator(), new ValueOperator() });
+				return Arrays.asList(new Operator[] { new SignumOperator(), new VariableOperator(), new ValueOperator() });
 			}
 
 			public Comparator<Double> getComparator() {
@@ -39,31 +39,19 @@ public class EqualsOperatorTest {
 
 	@Test
 	public void checkDefault() {
-		assertEquals(1.0, mathieEnv.getExpression("equals(1.0, 1.0)")
+		assertEquals(1.0, mathieEnv.getExpression("sign(1.0)")
 									.getValue(), 0.0);
 	}
 
 	@Test
 	public void checkNested() {
-		assertEquals(1.0, mathieEnv.getExpression("equals(equals(2.0, 2.0),1.0)")
+		assertEquals(-1.0, mathieEnv.getExpression("sign(sign(-1.0))")
 									.getValue(), 0.0);
 	}
 
 	@Test
 	public void checkMultiple() {
-		assertEquals(1.0, mathieEnv.getExpression("equals(3.0, 3.0, 3.0)")
-									.getValue(), 0.0);
-	}
-
-	@Test
-	public void checkDelta() {
-
-		// delta is 0.1, so 1.0 <--> 1.05 should return 1.0;
-		assertEquals(1.0, mathieEnv.getExpression("equals(1.0,1.05)")
-									.getValue(), 0.0);
-
-		// delta is 0.1, so 1.0 <--> 1.15 should return 0.0;
-		assertEquals(0.0, mathieEnv.getExpression("equals(1.0,1.15)")
+		assertEquals(0.0, mathieEnv.getExpression("sign(0.0)")
 									.getValue(), 0.0);
 	}
 
