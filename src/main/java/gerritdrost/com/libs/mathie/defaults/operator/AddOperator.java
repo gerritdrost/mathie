@@ -18,7 +18,7 @@ public class AddOperator
 
 			@Override
 			public void recalculate() {
-				value = children[0].getValue() + children[1].getValue();/todo review if the flipped expression saves cpu
+				value = children[0].getValue() + children[1].getValue();//todo review if the flipped expression saves cpu
 			}
 			
 		};
