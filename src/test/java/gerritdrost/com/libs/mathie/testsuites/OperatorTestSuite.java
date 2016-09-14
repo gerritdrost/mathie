@@ -12,6 +12,7 @@ import gerritdrost.com.libs.mathie.defaults.operator.MinimumOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.MultiplyOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.PowerOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.SecantOperatorTest;
+import gerritdrost.com.libs.mathie.defaults.operator.SignumOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.SineOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.SubtractOperatorTest;
 import gerritdrost.com.libs.mathie.defaults.operator.TangentOperatorTest;
@@ -27,7 +28,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				PowerOperatorTest.class, SineOperatorTest.class, CosineOperatorTest.class, TangentOperatorTest.class,
 				SecantOperatorTest.class, CosecantOperatorTest.class, CotangentOperatorTest.class, GroupedInfixOperatorTest.class,
 				AbsOperatorTest.class, FunctionOperatorTest.class, MinimumOperatorTest.class, MaximumOperatorTest.class,
-				EqualsOperatorTest.class })
+				EqualsOperatorTest.class, SignumOperatorTest.class })
 public class OperatorTestSuite {
 
 }
