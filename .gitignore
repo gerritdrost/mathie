@@ -5,3 +5,6 @@
 /.project
 /.idea/
 /mathie.iml
+/build/
+/.gradle/
+/out/

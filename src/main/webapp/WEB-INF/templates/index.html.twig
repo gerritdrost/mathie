@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mathie</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+</head>
+<body>
+<pre id="output">
+
+</pre>
+<form>
+    <input id="query" type="text" name="expression" placeholder="Enter your expression" />
+</form>
+<script>
+    $(function() {
+        $output = $('#output');
+        $input = $('#query');
+
+        // Prevent submit on enter
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        // Map keyup of enter key to "enterPressed" event
+        $input.keyup(function(e){
+            if(e.keyCode == 13)
+            {
+                $(this).trigger("enterPressed");
+            }
+        });
+
+        //
+        var showOutputLine = function(queryOutcomePair) {
+            $output.append("\n" + queryOutcomePair.query + "\n" + '  --> ' + queryOutcomePair.outcome + "\n");
+        };
+
+        $.get(
+                'list',
+                function(list) {
+                    $.each(list, function(i, queryOutcomePair) {
+                        showOutputLine(queryOutcomePair);
+                    });
+                }
+        );
+
+        $input.on('enterPressed', function() {
+            $input.attr('disabled', true);
+
+            $.get(
+                    'calculate',
+                    {q: $input.val()},
+                    function(queryOutcomePair) {
+                        showOutputLine(queryOutcomePair);
+                    }
+            ).always(
+                function() {
+                    $input.val('');
+                    $input.attr('disabled', false);
+                }
+            );
+        });
+    });
+</script>
+</body>
+</html>
