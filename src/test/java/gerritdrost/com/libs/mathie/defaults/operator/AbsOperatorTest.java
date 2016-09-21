@@ -47,7 +47,7 @@ public class AbsOperatorTest {
 	@Test
 	public void checkDefault() {
 		assertEquals(mathieEnv.getExpression("abs(-2.0)")
-								.getValue(), 2.000009, 0.0);
+								.getValue(), 2.0, 0.0);
 	}
 
 	@Test
