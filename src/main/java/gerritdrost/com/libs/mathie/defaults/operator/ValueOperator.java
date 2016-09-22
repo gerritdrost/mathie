@@ -12,6 +12,7 @@ public class ValueOperator
 	@Override
 	public boolean applies(String expression) {
 		try {
+			@SuppressWarnings("unused")
 			double val = Double.parseDouble(expression);
 			return true;
 		} catch (NullPointerException | NumberFormatException e) {

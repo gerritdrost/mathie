@@ -6,11 +6,11 @@ import gerritdrost.com.libs.mathie.util.Pair;
 
 import java.util.Comparator;
 
-public class EqualsOperator
+public class SignumOperator
 		extends FunctionOperator {
 
-	public EqualsOperator() {
-		super("equals", Pair.create(1, Integer.MAX_VALUE));
+	public SignumOperator() {
+		super("sign", Pair.create(1, 1));
 	}
 
 	@Override
@@ -19,16 +19,7 @@ public class EqualsOperator
 
 			@Override
 			public void recalculate() {
-				double compareVal = children[0].getValue();
-				
-				value = 1.0;
-
-				for (int i = 1; i < children.length; i++) {
-					if (comparator.compare(compareVal, children[i].getValue()) != 0) {
-						value = 0.0;
-						return;
-					}
-				}
+				value = Math.signum(children[0].getValue());
 			}
 
 		};

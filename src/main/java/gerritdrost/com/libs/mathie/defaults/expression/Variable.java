@@ -42,5 +42,5 @@ public class Variable
 	public void increment(double delta) {
 		set(value + delta);
 	}
-
+// jo dit is een comment
 }

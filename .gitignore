@@ -3,3 +3,8 @@
 /.settings/
 /.classpath
 /.project
+/.idea/
+/mathie.iml
+/build/
+/.gradle/
+/out/
